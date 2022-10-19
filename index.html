@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Pixelizator</title>
+	</head>
+	<body>
+		<img id="img" src="" />
+		<canvas id="canvas"></canvas>
+		<div id="modalText" class="modal-text" data-closetext="true">
+			<div>
+				<div class="input-text">
+					<label for="inputText">Your text: </label>
+					<textarea id="inputText" placeholder="Use right slash / 
+					to split text /
+					to new line"></textarea>
+				</div>
+				<div>
+					<label id="scaleLabel" for="scale">Scale: 1</label>
+					<input id="scale" type="range" min="1" max="5" value="1" />
+				</div>
+				<div>
+					<label id="fontSizeLabel" for="fontSize">Font size: 150</label>
+					<input id="fontSize" type="range" min="36" max="200" step="2" value="150" />
+				</div>
+				<div>
+					<label id="colorLabel" for="color">Color: </label>
+					<input id="color" type="color" value="#fcac19" />
+				</div>
+				<div>
+					<label id="fontLabel" for="font">Font: </label>
+					<input id="font" type="text" placeholder="Verdana" />
+				</div>
+			</div>
+		</div>
+		<div id="modal" data-close="true" class="modal">
+			<div>
+				<textarea id="imageLink" placeholder="Put image-URL here"></textarea>
+				<h2>or upload your file</h2>
+				<input id="file" type="file" />
+				<button id="button">Apply picture</button>
+			</div>
+		</div>
+		<div id="options" class="options" style="--x: -17vmax">
+			<img id="arrow" class="arrow" src="./img/arrow.svg" alt="arrow" />
+			<img data-image="true" class="image" src="./img/image.svg" alt="image" />
+			<img data-text="true" class="text" src="./img/text.svg" alt="text" />
+			<div>
+				<input id="size" type="range" min="1" max="15" value="4" />
+				<label id="sizeLabel" for="size">Pixel size: 4</label>
+			</div>
+			<div>
+				<input id="gap" type="range" min="0" max="5" value="1" />
+				<label id="gapLabel" for="gap">Grid gap: 1</label>
+			</div>
+			<div>
+				<input id="speed" type="range" min="4" max="30" value="10" step="2" />
+				<label id="speedLabel" for="speed">Speed: 10</label>
+			</div>
+			<div>
+				<input id="radius" type="range" min="10" max="200" step="10" value="100" />
+				<label id="radiusLabel" for="radius">Mouse radius: 100</label>
+			</div>
+			<div>
+				<input id="forceDistance" type="range" min="1" max="100" value="50" />
+				<label id="forceDistanceLabel" for="forceDistance">Distance force: 50</label>
+			</div>
+			<div>
+				<input id="forceGravity" type="range" min="1" max="10" value="2" />
+				<label id="forceGravityLabel" for="forceGravity">Gravity force: 2</label>
+			</div>
+			<div>
+				<input id="direction" type="range" min="-1" max="1" step="2" value="-1" />
+				<label id="directionLabel" for="direction">Distance</label>
+			</div>
+		</div>
+		<script type="module" src="index.js"></script>
+	</body>
+</html>
