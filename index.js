@@ -38,6 +38,7 @@ const $color = document.getElementById('color')
 const $colorLabel = document.getElementById('colorLabel')
 const $font = document.getElementById('font')
 const $fontLabel = document.getElementById('fontLabel')
+const $loader = document.getElementById('loader')
 
 $canvas.width = window.innerWidth
 $canvas.height = window.innerHeight
@@ -78,6 +79,10 @@ window.addEventListener('click', e => {
 
 // Загрузка пользовательских картинок
 $button.addEventListener('click', () => {
+	$loader.classList.toggle('show-loader')
+	$inputText.value = ''
+	currentType = 'image'
+
 	try {
 		const text = $imageLink.value
 		const file = $file.files[0]
@@ -88,7 +93,6 @@ $button.addEventListener('click', () => {
 		}
 
 		if (file) {
-			console.log(123)
 			const formData = new FormData()
 			formData.append('image', file)
 			setImagePicture(formData)
@@ -126,23 +130,38 @@ function init(type) {
 }
 
 async function setImageUrl(url) {
+	currentImage?.stop()
+	currentText?.stop()
 	const data = await fetchUrl(url)
 	new Promise(res => {
 		$img.src = 'data:image/png;base64,' + data
 		res()
-	}).then(() => {
-		init(currentType)
 	})
+		.then(() => {
+			init(currentType)
+			$imageLink.value = ''
+		})
+		.finally(() => {
+			$loader.classList.toggle('show-loader')
+		})
 }
 
 async function setImagePicture(formData) {
+	currentImage?.stop()
+	currentText?.stop()
 	const data = await fetchImage(formData)
 	new Promise(res => {
+		currentImage?.stop()
 		$img.src = 'data:image/png;base64,' + data
 		res()
-	}).then(() => {
-		init(currentType)
 	})
+		.then(() => {
+			init(currentType)
+			$file.value = null
+		})
+		.finally(() => {
+			$loader.classList.toggle('show-loader')
+		})
 }
 
 // Обработка вводных данных

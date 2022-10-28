@@ -125,6 +125,8 @@ export class PixelImage {
 
 		if (this.isAnimate) {
 			requestAnimationFrame(this.render.bind(this))
+		} else {
+			this.context.clearRect(0, 0, this.width, this.height)
 		}
 	}
 
@@ -134,7 +136,6 @@ export class PixelImage {
 	}
 
 	stop() {
-		this.context.clearRect(0, 0, this.width, this.height)
 		this.isAnimate = false
 	}
 }

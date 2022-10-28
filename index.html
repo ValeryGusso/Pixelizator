@@ -14,9 +14,12 @@
 			<div>
 				<div class="input-text">
 					<label for="inputText">Your text: </label>
-					<textarea id="inputText" placeholder="Use right slash / 
+					<textarea
+						id="inputText"
+						placeholder="Use right slash / 
 					to split text /
-					to new line"></textarea>
+					to new line"
+					></textarea>
 				</div>
 				<div>
 					<label id="scaleLabel" for="scale">Scale: 1</label>
@@ -75,6 +78,18 @@
 			<div>
 				<input id="direction" type="range" min="-1" max="1" step="2" value="-1" />
 				<label id="directionLabel" for="direction">Distance</label>
+			</div>
+		</div>
+		<div id="loader" class="loader">
+			<div class="lds-roller">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
 			</div>
 		</div>
 		<script type="module" src="index.js"></script>

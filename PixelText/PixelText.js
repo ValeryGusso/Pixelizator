@@ -47,6 +47,7 @@ export class PixelText {
 
 		const textArray = this.settings.text.split('/')
 
+		this.context.clearRect(0, 0, this.width, this.height)
 		for (let i = 0; i < textArray.length; i++) {
 			this.context.fillText(textArray[i], 0, this.settings.fontSize * (i + 1))
 		}
@@ -90,8 +91,11 @@ export class PixelText {
 		this.context.fillText(`Total pixels: ${this.particles.length}`, 5, 60)
 		this.particles.forEach(pixel => pixel.render(this.context))
 		this.particles.forEach(pixel => pixel.update())
+
 		if (this.isAnimate) {
 			requestAnimationFrame(this.render.bind(this))
+		} else {
+			this.context.clearRect(0, 0, this.width, this.height)
 		}
 	}
 
@@ -101,7 +105,6 @@ export class PixelText {
 	}
 
 	stop() {
-		this.context.clearRect(0, 0, this.width, this.height)
 		this.isAnimate = false
 	}
 }
