@@ -117,11 +117,11 @@ export class PixelImage {
 		}
 
 		this.context.clearRect(0, 0, this.width, this.height)
+		this.particles.forEach(pixel => pixel.render(this.context))
+		this.particles.forEach(pixel => pixel.update())
 		this.context.fillStyle = '#cff'
 		this.context.fillText(`FPS: ${Math.ceil(this.fps)}`, 5, 30)
 		this.context.fillText(`Total pixels: ${this.particles.length}`, 5, 60)
-		this.particles.forEach(pixel => pixel.render(this.context))
-		this.particles.forEach(pixel => pixel.update())
 
 		if (this.isAnimate) {
 			requestAnimationFrame(this.render.bind(this))
